@@ -1,0 +1,33 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote of the Day</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        {% if quote %}
+        <div class="quote-container">
+            <p>{{ quote.q }}</p>
+            <p>- {{ quote.a }}</p>
+        </div>
+        {% endif %}
+        {% if error_message %}
+        <p class="error-message">{{ error_message }}</p>
+        {% endif %}
+        
+        <form method="post">
+            <label for="author">Enter author's name:</label>
+            <input type="text" id="author" name="author">
+            <button type="submit" name="author_search">Search by Author</button>
+        </form>
+        
+        <form method="post">
+            <button type="submit" name="random">Get Random Quote</button>
+        </form>
+    </div>
+</body>
+</html>
